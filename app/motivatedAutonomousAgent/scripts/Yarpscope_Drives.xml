@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<portscope rows= "3" columns = "1" carrier = "mcast">
+    <!-- DRIVES -->
+        <plot gridx = "0"
+          gridy = "0"
+          hspan = "1"
+          vspan = "1"
+          title = "Survival"
+          size = "600"
+          minval = "-70"
+          maxval = "70"
+          bgcolor = "White">
+          <graph remote = "/motivation/survivalDrive:o"
+               index = "0"
+               color = "Blue"
+               title = "Survival"
+               type = "lines" 
+               size = "3" />
+    </plot>
+    <plot gridx = "0"
+          gridy = "1"
+          hspan = "1"
+          vspan = "1"
+          title = "Affection"
+          size = "600"
+          minval = "-70"
+          maxval = "70"
+          bgcolor = "White">
+          <graph remote = "/motivation/affectDrive:o"
+               index = "0"
+               color = "Green"
+               title = "Comfort"
+               type = "lines" 
+               size = "3" />
+    </plot>
+        <plot gridx = "0"
+          gridy = "2"
+          hspan = "1"
+          vspan = "1"
+          title = "Explore"
+          size = "600"
+          minval = "-70"
+          maxval = "70"
+          bgcolor = "White">
+          <graph remote = "/motivation/exploreDriveObject:o"
+               index = "0"
+               color = "Orange"
+               title = "Boredom"
+               type = "lines" 
+               size = "3" />
+    </plot>
+</portscope>

@@ -1,0 +1,545 @@
+<application>
+    <name>MotivatedAutonomousAgent_SIM</name>
+    
+    <!-- ==================== MODULES ==================== -->
+    <module>
+        <name>yarpscope</name>
+        <parameters>--xml "/home/larocs/Leticia/motivatedAutonomousAgent/app/motivatedAutonomousAgent_SIM/scripts/Yarpscope_Drives.xml"</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpscope</name>
+        <parameters>--xml "/home/larocs/Leticia/motivatedAutonomousAgent/app/motivatedAutonomousAgent_SIM/scripts/Yarpscope_Needs.xml"</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!--YarpDataDumper-->
+ <!--
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /Survival --dir ../Data/yarpdatadumper/Drives/Survival</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /Explore --dir ../Data/yarpdatadumper/Drives/Explore</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /Affect --dir ../Data/yarpdatadumper/Drives/Affect</parameters>
+        <node>terminal</node>
+    </module>
+-->
+    <module>
+        <name>yarpdataplayer</name>
+        <parameters></parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpdataplayer</name>
+        <parameters>--name /dtPlayerImages</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!--YarpView-->
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /originalViewerL</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /segmentedViewerL</parameters>
+        <node>terminal</node>
+    </module>
+<!--
+    <module>
+        <name>yarpview</name>
+        <parameters>--name /leftCamDumper</parameters>
+        <node>terminal</node>
+    </module>
+-->
+    <!-- Perception -->
+    <module>
+        <name>icubeYARP</name>
+        <parameters>--name icube_0 --port /dev/ttyUSB0 --start</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>icubeYARP</name>
+        <parameters>--name icube_1 --port /dev/ttyUSB1 --start</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>iCubeProcessor</name>
+        <parameters>--numberICubes 2 --context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>yarpOpenFace</name>
+        <parameters></parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>skinProcessorHelper</name>
+        <parameters>--useLeftArm 1 --useRightArm 1</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>batterySensor</name>
+        <parameters>--context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>iCubSimInteraction</name>
+        <parameters>--robot icubSim --context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>ColorSegmentation</name>
+        <parameters>--name colorSegmentationL --threadName colorSegmentationL</parameters>
+        <node>terminal</node>
+    </module>
+<!--
+    <module>
+        <name>ColorSegmentation</name>
+        <parameters>--name colorSegmentationR --threadName colorSegmentationR</parameters>
+        <node>terminal</node>
+    </module>
+-->
+    <module>
+        <name>perception</name>
+        <parameters>--context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!-- Motivation -->
+    <module>
+        <name>motivation</name>
+        <parameters>--robotColor blue --robotProfile social --context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>decisionMaking</name>
+        <parameters>--robotColor blue --robotProfile social --context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!-- Action -->
+    <!-- Actions Rendering Engine -->
+    <module>
+        <name>yarprobotinterface</name>
+        <parameters>--context simCartesianControl --config no_legs.xml</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>iKinGazeCtrl</name>
+        <parameters>--from configSim.ini</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>iKinCartesianSolver</name>
+        <parameters>--context simCartesianControl --part right_arm</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>iKinCartesianSolver</name>
+        <parameters>--context simCartesianControl --part left_arm</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>wholeBodyDynamics</name>
+        <parameters>--robot icubSim --autoconnect --dummy_ft --no_legs</parameters>
+        <node>terminal</node>
+    </module>
+
+    <module>
+        <name>actionsRenderingEngine</name>
+        <parameters>--from sim/config.ini</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!-- Move Body -->
+    <module>
+        <name>ctpService</name>
+        <parameters>--robot icubSim --part torso</parameters>
+        <node>terminal</node>                
+    </module>
+
+    <module>
+        <name>ctpService</name>
+        <parameters>--robot icubSim --part right_arm</parameters>
+        <node>terminal</node>                
+    </module>
+
+    <module>
+        <name>ctpService</name>
+        <parameters>--robot icubSim --part left_arm</parameters>
+        <node>terminal</node>                
+    </module>
+
+    <module>
+        <name>action</name>
+        <parameters>--robot icubSim --robotPlatform icubSim --context motivatedAutonomousAgent_SIM</parameters>
+        <node>terminal</node>
+    </module>
+
+    <!-- ==================== CONNECTIONS ==================== -->
+<!--   
+    <connection>
+        <from>/motivation/survivalDrive:o</from>
+        <to>/Survival</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/motivation/exploreDriveObject:o</from>
+        <to>/Explore</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/motivation/affectDrive:o</from>
+        <to>/Affect</to>
+        <protocol>shmem</protocol>
+    </connection>
+-->
+    <connection>
+        <from>/icube_0/data:o</from>
+        <to>/iCubeProcessor/iCubeData_0:i</to>
+        <protocol>udp</protocol>
+    </connection>
+
+    <connection>
+        <from>/icube_0/events:o</from>
+        <to>/iCubeProcessor/iCubeEvents_0:i</to>
+        <protocol>udp</protocol>
+    </connection>
+
+    <connection>
+        <from>/icube_1/data:o</from>
+        <to>/iCubeProcessor/iCubeData_1:i</to>
+        <protocol>udp</protocol>
+    </connection>
+
+    <connection>
+        <from>/icube_1/events:o</from>
+        <to>/iCubeProcessor/iCubeEvents_1:i</to>
+        <protocol>udp</protocol>
+    </connection>
+
+    <connection>
+        <from>/iCubeProcessor/iCubeData:o</from>
+        <to>/perception/iCubeData:i</to>
+        <protocol>udp</protocol>
+    </connection>
+
+    <connection>
+        <from>/icubSim/cam/left</from>
+        <to>/yarpOpenFace/inputImg:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/yarpOpenFace/affectResText:o</from>
+        <to>/perception/affectEval:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/skinManager/skin_events:o</from>
+        <to>/skinProcessorHelper/skinTouch:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/skinProcessorHelper/skinTouch/data:o</from>
+        <to>/perception/skinTouch:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/icubSim/cam/left</from>
+        <to>/colorSegmentationL/img:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/colorSegmentationL/img:o</from>
+        <to>/segmentedViewerL</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/icubSim/cam/left</from>
+        <to>/originalViewerL</to>
+        <protocol>shmem</protocol>
+    </connection>
+<!--
+    <connection>
+        <from>/icub/camcalib/left/out</from>
+        <to>/leftCamDumper</to>
+        <protocol>shmem</protocol>
+    </connection>
+-->
+    <connection>
+        <from>/colorSegmentationL/out</from>
+        <to>/perception/blobsListL:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+<!--
+    <connection>
+        <from>/icubSim/cam/right</from>
+        <to>/colorSegmentationR/img:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/colorSegmentationR/out</from>
+        <to>/perception/blobsListR:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+-->
+    <connection>
+        <from>/batterySensor/batteryLevel:o</from>
+        <to>/perception/batteryLevel:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/batterySensor/noBattery:o</from>
+        <to>/decisionMaking/noBattery:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/batteryLevel:o</from>
+        <to>/motivation/batteryLevel:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+    
+    <connection>
+        <from>/perception/iCubes:o</from>
+        <to>/motivation/iCubes:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/allObjectsSeen:o</from>
+        <to>/motivation/allObjectsSeen:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+    
+    <connection>
+        <from>/perception/gazeFaceSkin:o</from>
+        <to>/motivation/gazeFaceSkin:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/gazeFaceSkin:o</from>
+        <to>/decisionMaking/gazeFaceSkin:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/allObjectsSeen:o</from>
+        <to>/decisionMaking/allObjsSeen:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/dataSkin:o</from>
+        <to>/decisionMaking/dataSkin:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/perception/dataAffect:o</from>
+        <to>/decisionMaking/dataAffect:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+    
+    <connection>
+        <from>/motivation/exploreDriveObject:o</from>
+        <to>/decisionMaking/exploreDriveObject:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/motivation/survivalDrive:o</from>
+        <to>/decisionMaking/survivalDrive:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/motivation/affectDrive:o</from>
+        <to>/decisionMaking/affectDrive:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/startDrivesComputation:o</from>
+        <to>/motivation/startDrivesComputation:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/saturetedAffectAct:o</from>
+        <to>/motivation/saturetedAffectAct:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/updateBoredom:o</from>
+        <to>/motivation/updateBoredom:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+    
+    <connection>
+        <from>/decisionMaking/updateBatteryConsumption:o</from>
+        <to>/batterySensor/updateBatteryConsumption:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/resetBattery:o</from>
+        <to>/batterySensor/resetBattery:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/resetWorld:o</from>
+        <to>/iCubSimInteraction/resetWorld:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/resetBoredomComfort:o</from>
+        <to>/motivation/resetBoredomComfort:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/actionTargetARE:o</from>
+        <to>/actionsRenderingEngine/cmd:io</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/movement/torso</from>
+        <to>/ctpservice/torso/rpc</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/movement/right_arm</from>
+        <to>/ctpservice/right_arm/rpc</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/movement/left_arm</from>
+        <to>/ctpservice/left_arm/rpc</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/recharge:o</from>
+        <to>/batterySensor/recharge:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/speech:o</from>
+        <to>/acapelaSpeak/speech:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/cmdFace:rpc</from>
+        <to>/icub/face/raw/in</to>
+        <protocol>shmem</protocol>
+    </connection>  
+
+    <!--Stop application-->
+ <!--    <connection>
+        <from>/decisionMaking/stopApplication:o</from>
+        <to>/batterySensor</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/stopApplication:o</from>
+        <to>/perception</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/stopApplication:o</from>
+        <to>/motivation</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/stopApplication:o</from>
+        <to>/action</to>
+        <protocol>shmem</protocol>
+    </connection> 
+
+    <connection>
+        <from>/decisionMaking/stopApplication:o</from>
+        <to>/decisionMaking</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+<!-DEBUG->
+    <connection>
+        <from>/motivation/boredom:o</from>
+        <to>/decisionMaking/boredom:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/motivation/comfort:o</from>
+        <to>/decisionMaking/comfort:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+-->
+    <connection>
+        <from>/icub/camcalib/left/out</from>
+        <to>/icubSim/texture/screen</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/action/statusEyelids:o</from>
+        <to>/perception/statusEyelids:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+    <connection>
+        <from>/decisionMaking/commandSM:o</from>
+        <to>/action/commandSM:i</to>
+        <protocol>shmem</protocol>
+    </connection>
+
+</application>

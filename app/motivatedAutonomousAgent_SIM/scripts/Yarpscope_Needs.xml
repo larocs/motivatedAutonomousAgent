@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<portscope rows= "3" columns = "1" carrier = "mcast">
+    <!-- DRIVES -->
+        <plot gridx = "0"
+          gridy = "0"
+          hspan = "1"
+          vspan = "1"
+          title = "Battery"
+          size = "600"
+          minval = "0"
+          maxval = "100"
+          bgcolor = "White">
+          <graph remote = "/perception/batteryLevel:o"
+               index = "0"
+               color = "Blue"
+               title = "Battery"
+               type = "lines" 
+               size = "3" />
+    </plot>
+    <plot gridx = "0"
+          gridy = "1"
+          hspan = "1"
+          vspan = "1"
+          title = "Comfort"
+          size = "600"
+          minval = "0"
+          maxval = "100"
+          bgcolor = "White">
+          <graph remote = "/motivation/comfort:o"
+               index = "0"
+               color = "Green"
+               title = "Comfort"
+               type = "lines" 
+               size = "3" />
+    </plot>
+        <plot gridx = "0"
+          gridy = "2"
+          hspan = "1"
+          vspan = "1"
+          title = "Boredom"
+          size = "600"
+          minval = "0"
+          maxval = "100"
+          bgcolor = "White">
+          <graph remote = "/motivation/boredom:o"
+               index = "0"
+               color = "Orange"
+               title = "Boredom"
+               type = "lines" 
+               size = "3" />
+    </plot>
+</portscope>
